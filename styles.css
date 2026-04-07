@@ -29,6 +29,8 @@ body {
   color: var(--text);
   min-height: 100vh;
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .top-bar {
@@ -49,6 +51,7 @@ body {
   border-radius: 12px;
   box-shadow: var(--shadow);
   padding: 24px;
+  scroll-margin-top: 16px;
 }
 
 .header {
@@ -100,6 +103,16 @@ body {
 
 .section {
   margin-bottom: 20px;
+  position: relative;
+}
+
+.section:not(:last-of-type)::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: -11px;
+  border-bottom: 1px solid #edf2f7;
 }
 
 .section-header {
@@ -233,6 +246,8 @@ tbody td:first-child {
 a {
   color: #2b6cb0;
   text-decoration: none;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
 }
 
 a:hover {
@@ -463,15 +478,89 @@ tr.overdue-row td:first-child {
 }
 
 @media (max-width: 780px) {
+  body {
+    line-height: 1.62;
+  }
+
   .page {
-    padding: 20px 14px 40px;
+    padding: 16px 12px calc(54px + env(safe-area-inset-bottom));
   }
 
   .card {
-    padding: 18px;
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  .header {
+    margin-bottom: 16px;
+  }
+
+  .summary {
+    margin-bottom: 16px;
+  }
+
+  .section {
+    margin-bottom: 14px;
+  }
+
+  .section-header {
+    margin-bottom: 12px;
+    padding-bottom: 9px;
   }
 
   .header h1 {
-    font-size: 20px;
+    font-size: 21px;
+    line-height: 1.25;
+  }
+
+  .header-sub {
+    gap: 8px 10px;
+  }
+
+  .header-sub span {
+    font-size: 12px;
+  }
+
+  /* Keep the layout airy and avoid cramped horizontal scrolling. */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    border-radius: 8px;
+  }
+
+  thead th,
+  tbody td {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .risk-card {
+    padding: 13px 14px;
+    gap: 10px;
+  }
+
+  .resources-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .resource-card {
+    min-height: 50px;
+    padding: 12px;
+  }
+
+  .resource-link {
+    font-size: 12px;
+    padding: 6px 2px;
+  }
+
+  .status,
+  .auth,
+  .na-tag {
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
   }
 }
