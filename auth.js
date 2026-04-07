@@ -6,7 +6,14 @@ function isAuthenticated() {
   return localStorage.getItem(AUTH_KEY) === "true";
 }
 
-if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/" || window.location.pathname === "") {
+const path = window.location.pathname;
+const isIndexRoute =
+  path.endsWith("/index.html") ||
+  path.endsWith("/") ||
+  path === "" ||
+  !path.split("/").pop().includes(".");
+
+if (isIndexRoute) {
   if (!isAuthenticated()) {
     window.location.href = "login.html";
   }
