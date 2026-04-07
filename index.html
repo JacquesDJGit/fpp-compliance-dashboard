@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FPP - Compliance Obligations</title>
 <link rel="stylesheet" href="styles.css">
+<script defer src="auth.js"></script>
 </head>
 <body>
 <div class="top-bar"></div>
@@ -246,6 +247,7 @@
   <footer class="footer">
     Prepared based on Five Peaks Properties Shareholders&#x27; Agreement dated 22 July 2025 and the South African compliance framework for private companies. This document does not constitute legal or tax advice.
     <div>Generated from compliance_tracker.xlsx (2026).</div>
+    <button class="logout-btn" type="button" onclick="localStorage.removeItem('fpp_dashboard_authenticated');window.location.href='login.html';">Log out</button>
   </footer>
 </div>
 </body>
